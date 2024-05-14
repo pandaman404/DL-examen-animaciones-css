@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --font: 'Montserrat', sans-serif;
+    --black-50: #f6f6f6;
+    --black-100: #e7e7e7;
+    --black-200: #d1d1d1;
+    --black-300: #b0b0b0;
+    --black-400: #888888;
+    --black-500: #6d6d6d;
+    --black-600: #5d5d5d;
+    --black-700: #4f4f4f;
+    --black-800: #454545;
+    --black-900: #3d3d3d;
+    --black-950: #080808;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--black-950);
+    color: var(--black-50);
+    font-family: var(--font);
+}
+
+a {
+    text-decoration: none;
+    color: var(--black-50);
+}
+
+.container {
+    width: 100%;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    @media only screen and (min-width: 768px) {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+#root {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(min-content, max-content) repeat(5, 1fr);
+    grid-template-areas:
+        'menu'
+        'gallery'
+        'tours'
+        'merchandise'
+        'albums'
+        'footer';
+
+    @media only screen and (min-width: 768px) {
+        grid-template-columns: minmax(min-content, max-content) 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-areas:
+            'menu gallery'
+            'menu tours'
+            'menu merchandise'
+            'menu albums'
+            'menu footer';
+    }
+}
+
+#menu {
+    grid-area: menu;
+    background-color: var(--black-950);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 15px 20px;
+
+    @media only screen and (min-width: 768px) {
+        flex-flow: column;
+        border-right: 3px solid var(--black-100);
+        padding: 100px 20px;
+        justify-content: flex-start;
+    }
+
+    .logo {
+        width: 150px;
+        filter: invert(0.91);
+    }
+
+    .hamburger-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        i {
+            color: var(--black-100);
+            font-size: 25px;
+        }
+
+        @media only screen and (min-width: 768px) {
+            display: none;
+        }
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 5rem 2rem;
+        position: fixed;
+        top: 66px;
+        right: 0;
+        height: calc(100% - 66px);
+        background-color: var(--black-950);
+        width: 70%;
+        max-width: 25rem;
+        transform: translateX(100%);
+        transition: transform 0.2s ease;
+
+        @media only screen and (min-width: 768px) {
+            position: relative;
+            height: auto;
+            width: auto;
+            max-width: auto;
+            top: 0;
+            transform: translateX(0%);
+        }
+    }
+}
+
+#root.open #menu ul {
+    transform: translateX(0%);
+}
+
+#gallery {
+    grid-area: gallery;
+    border: 1px solid red;
+}
+
+#tours {
+    grid-area: tours;
+    border: 1px solid red;
+}
+
+#merchandise {
+    grid-area: merchandise;
+    border: 1px solid red;
+}
+
+#albums {
+    grid-area: albums;
+    border: 1px solid red;
+}
+
+#footer {
+    grid-area: footer;
+    border: 1px solid red;
+}
